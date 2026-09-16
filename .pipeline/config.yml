@@ -1,7 +1,7 @@
 general:
   projectName: kpprobe-prvoting
   productiveBranch: 'PR-1'
-  buildTool: 'kpcustom'
+  buildTool: 'custom'
 stages:
   Pull-Request Voting:
     checksPublishResults: false
@@ -19,6 +19,8 @@ stages:
 steps:
   artifactPrepareVersion:
     versioningType: 'library'
+    filePath: 'package.json'
+    customVersionField: 'version'
   buildExecute:
     dockerImage: 'kpnoop'
     dockerCommand: 'echo KP-BUILD-OK'
