@@ -1,0 +1,7 @@
+general:
+  projectName: kpprobe-prvoting
+steps:
+  slackSendNotification:
+    baseUrl: 'http://127.0.0.1:9/'
+    channel: '#kp'
+    color: 'good'
