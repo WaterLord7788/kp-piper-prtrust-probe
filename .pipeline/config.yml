@@ -1,9 +1,9 @@
 general:
   projectName: kpprobe-prvoting
   productiveBranch: 'PR-1'
+  buildTool: 'maven'
 stages:
   Release:
     kpMarker: 'KP-RELEASE-STAGE-CONFIGURED-BY-UNTRUSTED-PR'
-steps:
-  slackSendNotification:
-    baseUrl: 'http://127.0.0.1:9/'
+  Promote:
+    kpMarker: 'KP-PROMOTE-STAGE-CONFIGURED-BY-UNTRUSTED-PR'
