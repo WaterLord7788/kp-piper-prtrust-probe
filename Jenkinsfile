@@ -17,7 +17,7 @@ node {
       echo "KP-COMMITS-IN-THIS-BUILD:"
       git log --format='%H | %an <%ae> | %s' origin/main..HEAD
       echo "KP-STEP-1-transportRequestReqIDFromGit:"
-      $PIPERBIN transportRequestReqIDFromGit --gitFrom=origin/main --gitTo=HEAD --transportRequestLabel=TransportRequest
+      $PIPERBIN transportRequestReqIDFromGit --customConfig=kpcfg/kp-maintainer-config.yml --gitFrom=origin/main --gitTo=HEAD --transportRequestLabel=TransportRequest
       echo "KP-CPE-VALUE:"
       cat .pipeline/commonPipelineEnvironment/custom/transportRequestId; echo
       echo "KP-STEP-2-transportRequestUploadCTS:"
