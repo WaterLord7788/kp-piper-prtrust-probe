@@ -1,9 +1,12 @@
 general:
   projectName: kpprobe-prvoting
   productiveBranch: 'PR-1'
-  buildTool: 'maven'
+  buildTool: 'npm'
 stages:
   Release:
     kpMarker: 'KP-RELEASE-STAGE-CONFIGURED-BY-UNTRUSTED-PR'
   Promote:
     kpMarker: 'KP-PROMOTE-STAGE-CONFIGURED-BY-UNTRUSTED-PR'
+steps:
+  artifactPrepareVersion:
+    versioningType: 'library'
