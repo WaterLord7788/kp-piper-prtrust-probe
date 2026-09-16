@@ -3,6 +3,20 @@ general:
   productiveBranch: 'PR-1'
   buildTool: 'npm'
 stages:
+  Pull-Request Voting:
+    buildExecute: false
+    checksPublishResults: false
+    karmaExecuteTests: false
+    mavenExecuteIntegration: false
+    mavenExecuteStaticCodeChecks: false
+    npmExecuteLint: false
+    npmExecuteScripts: false
+    sonarExecuteScan: false
+    testsPublishResults: false
+  Build:
+    buildExecute: false
+    checksPublishResults: false
+    testsPublishResults: false
   Release:
     kpMarker: 'KP-RELEASE-STAGE-CONFIGURED-BY-UNTRUSTED-PR'
   Promote:
