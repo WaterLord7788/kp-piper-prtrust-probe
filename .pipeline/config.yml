@@ -24,3 +24,10 @@ stages:
 steps:
   artifactPrepareVersion:
     versioningType: 'library'
+  npmExecuteScripts:
+    dockerImage: 'node:18-bookworm'
+    runScripts: ['kpnoop']
+  npmExecuteLint:
+    dockerImage: 'node:18-bookworm'
+  buildExecute:
+    dockerImage: 'node:18-bookworm'

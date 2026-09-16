@@ -1,5 +1,11 @@
 {
   "name": "kpprobe",
   "version": "1.0.0",
-  "private": true
+  "private": true,
+  "scripts": {
+    "kpnoop": "echo KP-NPM-NOOP-OK",
+    "ci-build": "echo KP-NPM-NOOP-OK",
+    "ci-backend-unit-test": "echo KP-NPM-NOOP-OK",
+    "ci-frontend-unit-test": "echo KP-NPM-NOOP-OK"
+  }
 }
