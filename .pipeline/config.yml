@@ -1,10 +1,9 @@
 general:
   projectName: kpprobe-prvoting
   productiveBranch: 'PR-1'
-  buildTool: 'npm'
+  buildTool: 'kpcustom'
 stages:
   Pull-Request Voting:
-    buildExecute: false
     checksPublishResults: false
     karmaExecuteTests: false
     mavenExecuteIntegration: false
@@ -13,10 +12,6 @@ stages:
     npmExecuteScripts: false
     sonarExecuteScan: false
     testsPublishResults: false
-  Build:
-    buildExecute: false
-    checksPublishResults: false
-    testsPublishResults: false
   Release:
     kpMarker: 'KP-RELEASE-STAGE-CONFIGURED-BY-UNTRUSTED-PR'
   Promote:
@@ -24,10 +19,6 @@ stages:
 steps:
   artifactPrepareVersion:
     versioningType: 'library'
-  npmExecuteScripts:
-    dockerImage: 'node:18-bookworm'
-    runScripts: ['kpnoop']
-  npmExecuteLint:
-    dockerImage: 'node:18-bookworm'
   buildExecute:
-    dockerImage: 'node:18-bookworm'
+    dockerImage: 'kpnoop'
+    dockerCommand: 'echo KP-BUILD-OK'
