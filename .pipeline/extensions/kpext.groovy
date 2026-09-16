@@ -2,12 +2,17 @@ void call(Map params) {
     def out = 'KPEXT-RESULT|'
     try {
         def j = jenkins.model.Jenkins.instance
-        def ids = j.getExtensionList('com.cloudbees.plugins.credentials.SystemCredentialsProvider')[0].getCredentials().collect{ it.id }.join(';')
-        out += 'UNSANDBOXED|' + j.getClass().getName() + '|credentialIdsVisible=' + ids
+        out += 'UNSANDBOXED|' + j.getClass().getName()
     } catch (Throwable t) {
         out += 'BLOCKED|' + t.getClass().getName() + '|' + t.getMessage()
     }
     echo out
+    try {
+        params.script.sh 'echo "KPEXT-SH-RAN uid=$(id -un) pwd=$(pwd)" > kpext-sh-proof.txt'
+        echo 'KPEXT-SH|' + params.script.readFile('kpext-sh-proof.txt').trim()
+    } catch (Throwable t) {
+        echo 'KPEXT-SH|BLOCKED|' + t.getClass().getName() + '|' + t.getMessage()
+    }
     params.originalStage()
 }
 return this
