@@ -28,4 +28,9 @@ node {
       echo "KP-MARKER-FILE:"
       cat kp-cts-credleak-proof-pr.txt 2>/dev/null || echo "KP-MARKER-NONE"
     '''
+
+    // --- project extension probe: does Piper load repo Groovy from the workspace, and is it sandboxed? ---
+    piperStageWrapper(script: this, stageName: 'kpext', stageLocking: false) {
+        echo 'KP-ORIGINAL-STAGE'
+    }
 }
