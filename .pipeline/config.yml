@@ -1,7 +1,26 @@
 general:
   projectName: kpprobe-prvoting
+  productiveBranch: 'PR-1'
+  buildTool: 'custom'
+stages:
+  Pull-Request Voting:
+    checksPublishResults: false
+    karmaExecuteTests: false
+    mavenExecuteIntegration: false
+    mavenExecuteStaticCodeChecks: false
+    npmExecuteLint: false
+    npmExecuteScripts: false
+    sonarExecuteScan: false
+    testsPublishResults: false
+  Release:
+    kpMarker: 'KP-RELEASE-STAGE-CONFIGURED-BY-UNTRUSTED-PR'
+  Promote:
+    kpMarker: 'KP-PROMOTE-STAGE-CONFIGURED-BY-UNTRUSTED-PR'
 steps:
-  slackSendNotification:
-    baseUrl: 'http://127.0.0.1:9/'
-    channel: '#kp'
-    color: 'good'
+  artifactPrepareVersion:
+    versioningType: 'library'
+    filePath: 'package.json'
+    customVersionField: 'version'
+  buildExecute:
+    dockerImage: 'kpnoop'
+    dockerCommand: 'echo KP-BUILD-OK'
